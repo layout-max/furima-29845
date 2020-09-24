@@ -28,7 +28,7 @@ has_many :orders
 | area_id        | integer     | null: false |
 | date_id        | integer     | null: false |
 | price          | integer     | null: false |
-| user_id        | integer     | foreign_key :true |
+| user_id        | integer     | null: false,  foreign_key :true |
 belongs_to :user
 has_one :order
 

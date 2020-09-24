@@ -4,35 +4,50 @@
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-| name     | string | null: false |
+| zenkaku-familyname     | string | null: false |
+| zenkaku-name     | string | null: false |
+| katakana-family-kana | string | null: false |
+| katakana-name-kana | string | null: false |
 | email    | string | null: false |
 | password | string | null: false |
 | nickname | string | null: false |
-| birthday | string | null: false |
+| birthday | data   | null: false |
 has_to :item
 has_to :user
 
 
 ## items テーブル
 
-| Column      | Type       | Options                        |
-| ------      | ---------- | ------------------------------ |
-| name        | references | null: false, foreign_key: true |
-| image       | references | null: false, foreign_key: true |
-| text        | references | null: false, foreign_key: true |
-| category    | references | null: false, foreign_key: true |
-| condition   | references | null: false, foreign_key: true |
-| send-cost   | references | null: false, foreign_key: true |
-| area        | references | null: false, foreign_key: true |
-| date        | references | null: false, foreign_key: true |
-| price       | references | null: false, foreign_key: true |
+| Column         | Type        | Options                        |
+| ------         | ----------  | ------------------------------ |
+| name           | string      | null: false |
+| text           | string      | null: false |
+| category_id    | integer     | null: false |
+| condition_id   |integer      | null: false |
+| send-cost_id   | integer     | null: false |
+| area_id        | integer     | null: false |
+| date_id        | integer     | null: false |
+| price_id       | integer     | null: false |
 belongs_to :user
 
 ## order テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| card    | references | null: false, foreign_key: true |
-| address | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------  | ---------- | ------------------------------ |
+| user_id  | integer    | null: false |
+| item_id  | integer    | null: false |
 belongs_to :user
 belongs_to :item
+has_one :address
+
+## address テーブル
+
+ | Column    | Type       | Options                       |
+ | -------   | ---------- | ------------------------------ |
+ | postcode  | integer    | null: false |
+ | states_id | integer    | null: false |
+ | cities    | string     | null: false |
+ | number    | string     | null: false |
+ | building  | string     |                                |
+ | telephone | integer    | null: false |
+ belongs_to :order

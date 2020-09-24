@@ -2,17 +2,18 @@
 
 ## users テーブル
 
-| Column   | Type        | Options     |
-| -------- | ------      | ----------- |
-| zenkaku-familyname     | string | null: false |
-| zenkaku-name           | string | null: false |
-| katakana-family-kana   | string | null: false |
-| katakana-name-kana     | string | null: false |
-| email    | string      | null: false |
-| password | string      | null: false |
-| nickname | string      | null: false |
-| birthday | date        | null: false |
-has_many :item
+| Column                 | Type        | Options     |
+| --------               | ------      | ----------- |
+| zenkaku-familyname     | string      | null: false |
+| zenkaku-name           | string      | null: false |
+| katakana-family-kana   | string      | null: false |
+| katakana-name-kana     | string      | null: false |
+| email                  | string      | null: false |
+| password               | string      | null: false |
+| nickname               | string      | null: false |
+| birthday               | date        | null: false |
+has_many :items
+has_many :orders
 
 
 ## items テーブル
@@ -20,14 +21,16 @@ has_many :item
 | Column         | Type        | Options                        |
 | ------         | ----------  | ------------------------------ |
 | name           | string      | null: false |
-| text           | string      | null: false |
+| text           | text        | null: false |
 | category_id    | integer     | null: false |
 | condition_id   | integer     | null: false |
 | send-cost_id   | integer     | null: false |
 | area_id        | integer     | null: false |
 | date_id        | integer     | null: false |
 | price          | integer     | null: false |
+| user_id        | integer     | foreign_key :true |
 belongs_to :user
+has_one :order
 
 ## order テーブル
 
@@ -43,10 +46,10 @@ has_one :address
 
  | Column    | Type       | Options                       |
  | -------   | ---------- | ------------------------------ |
- | postcode  | integer    | null: false |
- | states_id | string     | null: false |
+ | postcode  | string     | null: false |
+ | states_id | integer    | null: false |
  | cities    | string     | null: false |
  | number    | string     | null: false |
  | building  | string     |                                |
- | telephone | integer    | null: false |
+ | telephone | string     | null: false |
  belongs_to :order

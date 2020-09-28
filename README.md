@@ -24,7 +24,7 @@ has_many :orders
 | text           | text        | null: false |
 | category_id    | integer     | null: false |
 | condition_id   | integer     | null: false |
-| send-cost_id   | integer     | null: false |
+| send_cost_id   | integer     | null: false |
 | area_id        | integer     | null: false |
 | date_id        | integer     | null: false |
 | price          | integer     | null: false |

@@ -4,10 +4,10 @@
 
 | Column                 | Type        | Options     |
 | --------               | ------      | ----------- |
-| zenkaku-familyname     | string      | null: false |
-| zenkaku-name           | string      | null: false |
-| katakana-family-kana   | string      | null: false |
-| katakana-name-kana     | string      | null: false |
+| zenkaku_familyname     | string      | null: false |
+| zenkaku_name           | string      | null: false |
+| katakana_family_kana   | string      | null: false |
+| katakana-name_kana     | string      | null: false |
 | email                  | string      | null: false |
 | password               | string      | null: false |
 | nickname               | string      | null: false |

@@ -44,31 +44,31 @@ RSpec.describe Item, type: :model do
         end
 
         it "カテゴリーの情報がないとき" do
-          @item.category_id = 0
+          @item.category_id = nil
           @item.valid?
           expect(@item.errors.full_messages).to include("Category can't be blank")
         end
 
         it "商品の状態の情報がないとき" do
-          @item.condition_id = 0
+          @item.condition_id = nil
           @item.valid?
           expect(@item.errors.full_messages).to include("Condition can't be blank")
         end
 
         it "配送料の負担についての情報がないとき" do
-          @item.send_cost_id = 0
+          @item.send_cost_id = nil
           @item.valid?
           expect(@item.errors.full_messages).to include("Send cost can't be blank")
         end
 
         it "配送元の地域についての情報がないとき" do
-          @item.area_id = 0
+          @item.area_id = nil
           @item.valid?
           expect(@item.errors.full_messages).to include("Area can't be blank")
         end
 
         it "配送までの日数についての情報がないとき" do
-          @item.delivery_id = 0
+          @item.delivery_id = nil
           @item.valid?
           expect(@item.errors.full_messages).to include("Delivery can't be blank")
         end

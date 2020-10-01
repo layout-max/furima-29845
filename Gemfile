@@ -60,6 +60,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
 gem 'devise'
 
 gem 'pry-rails'
@@ -67,3 +69,5 @@ gem 'pry-rails'
 group :production do
   gem 'rails_12factor'
 end
+
+gem 'active_hash'

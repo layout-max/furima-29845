@@ -1,0 +1,2 @@
+class DonditionController < ApplicationController
+end

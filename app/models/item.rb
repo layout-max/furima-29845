@@ -9,7 +9,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :area
   belongs_to_active_hash :delivery
 
-  validates :name, :text, :category, :condition, :send_cost, :area, :delivery, :price, presence: true
-  validates :category_id, :condition_id, :send_cost, :area, :delivery, numericality: { other_than: 1 }
+  validates :name, :image, :info, :category, :condition, :send_cost, :area, :delivery, :price, presence: true
+  validates :category_id, :condition_id, :send_cost_id, :area_id, :delivery_id, numericality: { other_than: 1 }
   validates :price, inclusion: { in: 300..9_999_999 }
+  validates :price, format: {with:/[0-9]/, message: "は半角数字で入力してください。"}
 end

@@ -21,12 +21,12 @@ has_many :orders
 | Column         | Type        | Options                        |
 | ------         | ----------  | ------------------------------ |
 | name           | string      | null: false |
-| text           | text        | null: false |
+| info           | text        | null: false |
 | category_id    | integer     | null: false |
 | condition_id   | integer     | null: false |
 | send_cost_id   | integer     | null: false |
 | area_id        | integer     | null: false |
-| date_id        | integer     | null: false |
+| deribary_id    | integer     | null: false |
 | price          | integer     | null: false |
 | user_id        | integer     | null: false,  foreign_key :true |
 belongs_to :user

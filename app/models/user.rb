@@ -20,4 +20,7 @@ HEO = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
     validates :katakana_family_kana, format: { with:ZK, message: "は全角（カタカナ）で入力してください。"}
     validates :katakana_name_kana, format: { with:ZK, message:"は全角（カタカナ）で入力してください。"}
   end
+
+  has_many :order
+  has_many :items
 end

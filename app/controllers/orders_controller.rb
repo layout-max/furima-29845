@@ -10,19 +10,13 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    if @order.valid?
-      @order.save
-      return redirect_to root_path
-    else
-      render 'index'
-    end
+    redirect_to action: :index
+    Address.create(order_params)
   end
 
   private
 
   def order_params
-    params.require(:order).params(:price)
+    params.permit(:area_id, :cities, :number, :telephone, :building, :postcode).merge(user_id: current_user.id)
   end
-
 end

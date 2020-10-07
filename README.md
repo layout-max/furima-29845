@@ -47,7 +47,7 @@ has_one :address
  | Column    | Type       | Options                       |
  | -------   | ---------- | ------------------------------ |
  | postcode  | string     | null: false |
- | states_id | integer    | null: false |
+ | area_id   | integer    | null: false |
  | cities    | string     | null: false |
  | number    | string     | null: false |
  | building  | string     |                                |

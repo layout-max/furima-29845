@@ -6,17 +6,29 @@ class OrdersController < ApplicationController
     if @item.user_id == current_user.id
       return redirect_to root_path
     end
-    @order = Order.new
+    @order = OrderAddress.new
   end
 
   def create
-    redirect_to action: :index
-    Address.create(order_params)
+    @order = OrderAddress.new(order_params)
+    @item = Item.find(params[:item_id])
+    if @order.valid?
+      @order.save
+      Payjp.api_key = ENV["PAYJP_secret_KEY"]
+      Payjp::Charge.create(
+        amount: @item.price,
+        card: params[:token],
+        currency: 'jpy'
+      )
+      redirect_to root_path
+      else
+        render 'index'
+    end
   end
 
   private
 
   def order_params
-    params.permit(:area_id, :cities, :number, :telephone, :building, :postcode).merge(user_id: current_user.id)
+    params.permit(:item_id, :area_id, :cities, :number, :telephone, :building, :postcode, :token).merge(user_id: current_user.id)
   end
 end

@@ -1,17 +1,22 @@
 class OrderAddress
-  include ActiveModel::ActiveModel
-  attr_accessor :user_id, :item_id, :postcode, :area_id, :cities, :number, :building, :telephone
+  include ActiveModel::Model
+  attr_accessor :user_id, :item_id, :postcode, :area_id, :cities, :number, :building, :telephone, :order_id, :token 
 
- with option presence: true do
-  validate :postcode, :area, :cities, :number, :telephone, :postcode presence: true
-  validates :area_id, { other_than: 1 }
+ with_options presence: true do
+  validates :postcode, :cities, :number, :postcode
   validates :postcode, format: {with:/[-0-9]/}
-  validates :telephone, format: {[0-9]{,11}}
+  validates :telephone, length: { maximum: 11 }
  end
-  validates :price, presence: true
+
+ with_options numericality: {other_than: 1}  do
+  validates :area_id
+ end
+
+ with_options  presence:true do
+ end
 
   def save
     order = Order.create(user_id:user_id, item_id: item_id)
-    Address.create(postcode: postcode, area_id: area_id, cities: cities, number: number, bulding: building, telephone: telephone)
+    Address.create(postcode: postcode, area_id: area_id, cities: cities, number: number, building: building, telephone: telephone, order_id: order.id)
   end
 end

@@ -4,9 +4,9 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with(model: @item, url: item_path, local: true) do |form| %>
+    <%= form_with model: @item, url: items_path, local: true do |f| %>
       <%#= render 'error_messages', model: @user.item %>
-      <%= render 'shared/error_messages', model: f.object %>
+      <%= render 'shared/error_messages', model: f.object%>
 
     <%# 出品画像 %>
     <div class="img-upload">

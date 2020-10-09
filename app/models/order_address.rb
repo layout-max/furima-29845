@@ -3,8 +3,8 @@ class OrderAddress
   attr_accessor :user_id, :item_id, :postcode, :area_id, :cities, :number, :building, :telephone, :order_id, :token 
 
  with_options presence: true do
-  validates :postcode, :cities, :number, :postcode
-  validates :postcode, format: {with:/[-0-9]/}
+  validates :cities, :number, :token
+  validates :postcode, format: {with:/\A\d{3}[-]\d{4}\z/}
   validates :telephone, length: { maximum: 11 }
  end
 

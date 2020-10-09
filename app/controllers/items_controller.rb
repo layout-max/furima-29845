@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  # before_action :authenticate_user!
+
 
   def index
     @items=Item.all.order("created_at desc")
@@ -34,7 +34,6 @@ class ItemsController < ApplicationController
     else
       render 'show'
     end
-    
   end
 
   def update

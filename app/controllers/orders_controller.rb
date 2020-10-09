@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_index, only: [:index]
-  
+  before_action :SetItem, only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     if @item.user_id == current_user.id
       return redirect_to root_path
     end
@@ -12,7 +12,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = OrderAddress.new(order_params)
-    @item = Item.find(params[:item_id])
     if @order.valid?
       pay
       @order.save
@@ -29,7 +28,6 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    @item = Item.find(params[:item_id])
     unless  @item.order == nil
       redirect_to root_path
     end
@@ -42,5 +40,9 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def SetItem
+    @item = Item.find(params[:item_id])
   end
 end

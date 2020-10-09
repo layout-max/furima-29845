@@ -12,9 +12,6 @@ class OrderAddress
   validates :area_id
  end
 
- with_options  presence:true do
- end
-
   def save
     order = Order.create(user_id:user_id, item_id: item_id)
     Address.create(postcode: postcode, area_id: area_id, cities: cities, number: number, building: building, telephone: telephone, order_id: order.id)

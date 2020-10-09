@@ -1,7 +1,6 @@
 function memo() {
   const input = document.getElementById("item-price")
   const cost = document.getElementById("cost-price")
-  console.log(cost)
   const get = document.getElementById("profit")
 
   input.addEventListener("change", function() {

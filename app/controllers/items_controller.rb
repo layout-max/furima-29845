@@ -1,17 +1,19 @@
 class ItemsController < ApplicationController
-
+before_action :authenticate_user!, only: [:create]
 
   def index
     @items=Item.all.order("created_at desc")
   end
 
   def new
+    redirect_to new_user_session_path unless user_signed_in?
     @item = Item.new
   end
 
   def create
+    redirect_to new_user_session_path unless user_signed_in?
     @item = Item.new(items_params)
-    if @item.valid?
+    if  @item.valid?
       @item.save
       redirect_to root_path
     else

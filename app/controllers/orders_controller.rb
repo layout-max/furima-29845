@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index, only: [:index]
   before_action :SetItem, only: [:index, :create]
+  before_action :move_to_index, only: [:index]
 
   def index
     if @item.user_id == current_user.id

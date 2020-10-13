@@ -23,4 +23,6 @@ HEO = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
 
   has_many :order
   has_many :items
+  has_many :users_rooms
+  has_many :rooms, through: :users_rooms
 end

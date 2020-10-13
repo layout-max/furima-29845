@@ -1,0 +1,10 @@
+<h1>交流場（オススメ商品などの情報を共有しましょう！）</h1>
+<%= form_with model: @message do |f| %>
+  <%= f.text_field :text %>
+  <%= f.submit '送信' %>
+<% end %>
+<div id='messages'>
+  <% @messages.reverse_each do |message| %>
+    <p><%= message.text %></p>
+  <% end %>
+</div>

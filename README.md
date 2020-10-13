@@ -14,6 +14,8 @@
 | birthday               | date        | null: false |
 has_many :items
 has_many :orders
+has_many :users_rooms
+has_many :messages
 
 
 ## items テーブル
@@ -29,17 +31,17 @@ has_many :orders
 | deribary_id    | integer     | null: false |
 | price          | integer     | null: false |
 | user_id        | integer     | null: false,  foreign_key :true |
-belongs_to :user
-has_one :order
+belongs_to :users
+has_one :orders
 
-## order テーブル
+## orders テーブル
 
 | Column   | Type       | Options                        |
 | -------  | ---------- | ------------------------------ |
 | user_id  | integer    | null: false, foreign_key: true|
 | item_id  | integer    | null: false, foreign_key: true|
-belongs_to :user
-belongs_to :item
+belongs_to :users
+belongs_to :items
 has_one :address
 
 ## address テーブル
@@ -53,3 +55,31 @@ has_one :address
  | building  | string     |                                |
  | telephone | string     | null: false |
  belongs_to :order
+
+ ## users_rooms テーブル
+
+| Column        | Type       | Options                        |
+| -------       | ---------- | ------------------------------ |
+| user_id       | integer    | null: false, foreign_key: true |
+| room_id       | integer    | null: false, foreign_key: true |
+belongs_to :users
+belongs_to :rooms
+
+## rooms テーブル
+
+| Column        | Type       | Options                        |
+| -------       | ---------- | ------------------------------ |
+| user_id       | integer    | null: false, foreign_key: true |
+| title         | string     | null: false |
+has_many :messages
+has_many :users_rooms
+
+## messages テーブル
+
+| Column        | Type       | Options                        |
+| -------       | ---------- | ------------------------------ |
+| user_id       | integer    | null: false, foreign_key: true |
+| room_id       | integer    | null: false, foreign_key: true |
+| talk          | text       | null: false |
+belongs_to :users
+belongs_to :rooms

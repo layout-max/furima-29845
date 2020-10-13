@@ -13,13 +13,14 @@
     <ul class='lists-left'>
       <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
       <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+      <li><%= link_to 'チャット', new_message_path, class: "chat"%></li>
     </ul>
     <ul class='lists-right'>
       <%# deviseを導入できたら、ログインの有無で表示が変わるように分岐しましょう%>
       <%# <li><%= link_to current_user.nickname, "#", class: "user-nickname" </li> %>
       <%# <li><%= link_to 'ログアウト', "#", method: :delete, class: "logout" </li> %>
     <% if user_signed_in?%>
-      <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
+      <li><%= link_to current_user.nickname, class: "user-nickname" %></li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
     <% else %>
       <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>

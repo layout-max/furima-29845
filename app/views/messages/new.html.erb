@@ -2,6 +2,15 @@
 <%= form_with model: @message do |f| %>
   <%= f.text_field :text %>
   <%= f.submit '送信' %>
+  <div class="chat-image">
+  <div class="click-upload">
+    <p>
+      クリックしてファイルをアップロード
+    </p>
+    <%= f.file_field :image, id:"message-view" %>
+  </div>
+    <div id="message-image"></div>
+</div>
 <% end %>
 <div id='messages'>
   <% @messages.reverse_each do |message| %>

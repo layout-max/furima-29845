@@ -94,6 +94,7 @@
 .logout {
   text-decoration: none;
   color: #0000ee;
+  padding-left: 3vw;
 }
 
 .login {

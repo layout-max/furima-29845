@@ -10,8 +10,8 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
          const blobImage = document.createElement('img');
          blobImage.setAttribute('src', blob);
          // 生成したHTMLの要素をブラウザに表示させる
-         imageElement.appendChild(blobImage);
-         ImageList.appendChild(imageElement);
+         //imageElement.appendChild(blobImage);
+         //ImageList.appendChild(imageElement);
        };
     document.getElementById('item-view').addEventListener('change', function(e){
       // 画像が表示されている場合のみ、すでに存在している画像を削除する

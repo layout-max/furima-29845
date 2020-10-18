@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
     @order = OrderAddress.new
   end
 
-  def create
+ def create
     @order = OrderAddress.new(order_params)
     if @order.valid?
       pay
@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
       redirect_to root_path
       else
         render 'index'
-    end
+    end    
   end
 
   private
@@ -40,6 +40,7 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+    Order.create(item_id: params[:id])
   end
 
   def SetItem

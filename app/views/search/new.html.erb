@@ -1,0 +1,77 @@
+<h1>
+  商品検索
+</h1>
+ <%= search_form_for @p, url: search_new_path do |f| %>
+   <%= f.label :name_eq, '商品名' %>
+   <%= f.collection_select :name_eq, @item_name, :name, :name, include_blank: '指定なし' %>
+   <br>
+    <%= f.label :size_eq, 'カテゴリー' %>
+    <%= f.collection_select :category_id_eq, @item_category, :id, :name, include_blank: "---" %>
+   <br>
+    <%= f.label :size_eq, '状態' %>
+    <%= f.collection_select :condition_id_eq, @item_condition, :id, :name, include_blank: "---" %>
+   <br>
+    <%= f.label :size_eq, '配送料' %>
+    <%= f.collection_select :send_cost_id_eq, @item_sendcost, :id, :name, include_blank: "---"%>
+   <br>
+    <%= f.label :size_eq, '配送元地域' %>
+    <%= f.collection_select :area_id_eq, @item_area, :id, :name, include_blank: "---"%>
+    <br>
+    <%= f.label :size_eq, '配送日数' %>
+    <%= f.collection_select :delivery_id_eq, @item_delivery, :id, :name, include_blank: "---"%>
+    <br>
+    <%= f.label :price, '価格：' %>
+    <%= f.radio_button :price_lteq, '1000' %>
+      1000円以下
+    <%= f.radio_button :price_lteq, '2500' %>
+      2500円以下
+    <%= f.radio_button :price_lteq, '5000' %>
+      5000円未満
+    <%= f.radio_button :price_gteq, '5000' %>
+      5000円以上
+    <br>
+  <%= f.submit '検索' %>
+  <p class="result">
+  商品一覧
+  </p>
+
+  <% @items.each do |item| %>
+  <td>
+  <br>
+  <li>
+    <%= item.name %>
+    <%= item.info%>
+    <%= item.price%>円
+    <%= item.category.name%>
+    <%= item.condition.name%>
+    <%= item.send_cost.name%>
+    <%= item.area.name%>
+    <%= item.delivery.name%>
+  </li>
+    <% end %>
+<% end %>
+
+<p class="result">
+  検索結果
+</p>
+<%# 検索結果の個数で条件分岐 %>
+<% if @results.length !=0 %>
+  <% @results.each do |result| %>
+    <td>
+    <br>
+    <li>
+      <%= result.name %>
+      <%= result.info %>
+      <%= result.price %>円
+      <%= result.category.name%>
+      <%= result.condition.name%>
+      <%= result.send_cost.name%>
+      <%= result.area.name%>
+      <%= result.delivery.name%>
+    </li>
+  <% end %>
+<% else %>
+  該当する商品はありません
+<% end %>
+<br>
+<%= link_to 'トップページへ戻る', root_path %>
